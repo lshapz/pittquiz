@@ -1,25 +1,23 @@
 import React from 'react'
 import Question from './question'
 import questions from '../assets/questionmaker'
-
 import Right from './right'
 import Wrong from './wrong'
-import SearchBar from '../assets/searchbar'
-import {connect} from 'react-redux'
-import {findActor, getQuestions} from '../ducks/reducer.js'
+// import SearchBar from '../assets/searchbar'
+// import {connect} from 'react-redux'
+// import {findActor, getQuestions} from '../ducks/reducer.js'
 // import getData from '../assets/questionmaker'
 
 class Quiz extends React.Component {
 
   constructor(props){
-  super(props)
-  var quest = questions
-   // var quest = getData(this.props.actor)
-  //  let quest = this.props.getQuestions(this.props.actor)
-   var redneredQuests = quest.map(item=>{
-    return <Question item={item} handleSubmit={this.handleQuestionSubmit.bind(this)}/>
-  })
-   var showMe = redneredQuests[Math.floor(Math.random()*redneredQuests.length)]
+    super(props)
+    var quest = questions
+    //  var quest = this.props.getQuestions(this.props.actor)
+    var questionComponent = quest.map(item=>{
+      return <Question item={item} handleSubmit={this.handleQuestionSubmit.bind(this)}/>
+    })
+    var showMe = questionComponent[Math.floor(Math.random()*questionComponent.length)]
     this.state = {
       started: true,
       ended: false,
@@ -30,7 +28,6 @@ class Quiz extends React.Component {
 
   handleQuestionSubmit(event){
     event.preventDefault()
-    
     let selected = Array.from(event.target.elements).filter(item=>{
       return item.checked
     })[0].value
@@ -44,9 +41,9 @@ class Quiz extends React.Component {
         it = item}
     })
     it.answers.forEach(item=>{
-        if (item.correct){
-          correctAnswer = item.content
-        }
+      if (item.correct){
+        correctAnswer = item.content
+      }
     })
 
     if (selected === correctAnswer) {
@@ -58,18 +55,9 @@ class Quiz extends React.Component {
   }
 
 
+  render(){
 
-
-
-render(){
-
-  // let quest = questions
-  // let redneredQuests = quest.map(item=>{
-  //   return <Question item={item} handleSubmit={this.handleSubmit.bind(this)}/>
-  // })
-  // let showMe = redneredQuests[Math.floor(Math.random()*redneredQuests.length)]
-  // let question = quest.filter(item=>{return item.title === showMe.props.item.title})
-  let show
+    let show
     // if (!this.state.started) {
     //   show = <SearchBar handleSubmit={this.handleSearchSubmit} /> 
     // } else 
@@ -80,25 +68,28 @@ render(){
     } else if (this.state.ended && !this.state.won) {
       show = <Wrong q={this.state.showMe.props.item} />
     } 
- let baseurl = "http://image.tmdb.org/t/p/w185/"
+    let baseurl = "http://image.tmdb.org/t/p/w185/"
 
-  return (<div>
-      <p><img src={baseurl + this.state.showMe.props.item.poster} /></p>
+    return (
+      <div>
+        <p><img src={baseurl + this.state.showMe.props.item.poster} alt="movieposter" /></p>
 
-    {show} 
-    
+        {show} 
+        
 
-  </div>)
-  
+      </div>
+
+    )
+  }
+
+
 
 }
 
+export default Quiz
 
+// function mapStateToProps(state){
+//   return {actor: state.actor, qs: state.qs}
+// }
 
-}
-
-function mapStateToProps(state){
-  return {actor: state.actor, qs: state.qs}
-}
-
-export default connect(mapStateToProps, {getQuestions})(Quiz)
+// export default connect(mapStateToProps, {getQuestions})(Quiz)

@@ -1,7 +1,4 @@
-var data = require('./data.json')
- 
- // console.log(data['results'][0]['title'])
- 
+var data = require('./brad_pitt_data.json') 
  
  var mapped = data.results.map(item=>{
    let year = item['release_date'].substr(0, 4)
@@ -36,5 +33,5 @@ var data = require('./data.json')
  
  })
  
- export default questions.slice(0, 7) 
+ export default questions
  
