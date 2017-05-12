@@ -3,11 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "jquery": "^3.2.1",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "child_process": "^1.0.2",
+    "fetch": "^1.1.0",
+    "http": "0.0.0",
+    "jquery": "^3.2.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "redux-devtools-extension": "^2.13.2",
+    "whatwg-fetch": "^2.0.3",
+    "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
