@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import findActor from '../rootReducer.js'
+import findActor from '../ducks/reducer.js'
 
 class SearchBar extends React.Component{
 // const SearchBar = (props) => {

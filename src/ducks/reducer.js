@@ -1,11 +1,11 @@
 import $ from 'jquery'
 
-export default(state = {actor: "", questions: {}}, action) => {
+export default(state = {actor: "", qs: {}}, action) => {
   switch (action.type) {
     case 'ACTOR_NAME':
       return Object.assign({}, state, {actor: action.payload})
     case 'ACTOR_QS':
-      return Object.assign({}, state, {questions: action.payload})
+      return Object.assign({}, state, {qs: action.payload})
     default:
       return state
   }
@@ -13,6 +13,7 @@ export default(state = {actor: "", questions: {}}, action) => {
 
 
  const getUrl = function(actor) {
+    let data
     const url = "http://api.themoviedb.org/3/search/person?api_key=0565cf9b565d67438edd46ccfecb5c1d&language=en-US&query=" + actor + "&page=1&include_adult=false"
     $.ajax({
       type: 'GET',
@@ -68,5 +69,7 @@ const getData = (actor) => {
 }
 
 
+
+
 export const findActor = (actor) => ({type: 'ACTOR_NAME', payload: actor})
-export const getQuestions = (qs) => ({type: 'ACTOR_QS', payload: qs})
+export const getQuestions = (actor) => ({type: 'ACTOR_QS', payload: getData(actor)})
