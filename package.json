@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "jquery": "^3.2.1",
     "react-scripts": "0.9.5"
   },
+  "homepage": "https://lshapz.github.io/pittquiz",
   "dependencies": {
     "child_process": "^1.0.2",
     "fetch": "^1.1.0",
@@ -21,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }

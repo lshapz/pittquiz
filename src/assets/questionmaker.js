@@ -6,7 +6,7 @@ var data = require('./brad_pitt_data.json')
      title: item['title'],
      year: year,
      img: item['poster_path'],
-     options: [year, (parseInt(year)-2).toString(), (parseInt(year)+3).toString()]
+     options: [year, (parseInt(year)-3).toString(), (parseInt(year)+2).toString()]
    }
  
  })
