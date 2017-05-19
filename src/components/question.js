@@ -21,9 +21,9 @@ const Question = (props) => {
         <span>
         {props.item.question}
         <form onSubmit={props.handleSubmit} title={props.item.title} >
-          <p><input type="radio" key={answers[0].content} value={answers[0].content} />{answers[0].content}</p>
-          <p><input type="radio" key={answers[1].content} value={answers[1].content} />{answers[1].content}</p>
-          <p><input type="radio" key={answers[2].content} value={answers[2].content} />{answers[2].content}</p>
+          <p><input type="radio" key={answers[0].content} name="answer" value={answers[0].content} />{answers[0].content}</p>
+          <p><input type="radio" key={answers[1].content} name="answer" value={answers[1].content} />{answers[1].content}</p>
+          <p><input type="radio" key={answers[2].content} name="answer" value={answers[2].content} />{answers[2].content}</p>
           <input type="submit" />
         </form>
         </span>
